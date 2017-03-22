@@ -4,6 +4,11 @@ module.exports = {
     ecmaVersion: 6,
     sourceType: 'module'
   },
+  plugins: [
+    'ember-suave',
+    'promise',
+    'standard'
+  ],
   extends: [
     'plugin:ember-suave/recommended',
     'standard'
