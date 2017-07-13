@@ -8,7 +8,11 @@ node_js:
 
 sudo: false
 
+addons:
+  chrome: stable
+
 cache:
+  yarn: true
   directories:
     - node_modules
 
@@ -29,16 +33,12 @@ before_install:
   - npm install -g yarn
   - npm install phantomjs-prebuilt
   - yarn global add greenkeeper-lockfile@1
-  - yarn global add bower
 
 install:
-  - yarn
-  - bower install
+  - yarn --no-lockfile
 
 before_script: greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload
 
 script:
-  # Usually, it's ok to finish the test scenario without reverting
-  #  to the addon's original dependency state, skipping "cleanup".
-  - ember try $EMBER_TRY_SCENARIO test --skip-cleanup
+  - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO test --skip-cleanup
