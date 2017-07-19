@@ -8,6 +8,7 @@ const MyRouter = Router.extend({
 })
 
 MyRouter.map(function () {
+  this.route('test')
 })
 
 export default MyRouter
